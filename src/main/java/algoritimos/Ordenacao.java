@@ -7,11 +7,11 @@ import java.util.Arrays;
 public class Ordenacao {
     public static void main(String[] args) {
         int maxElements = Integer.MAX_VALUE;
-        int elements = 300;
+        int elements = 100;
         int[] vals =  RandomIntArray.getRandomIntArray(elements, maxElements);
-        System.out.println("Original");
-        Arrays.stream(vals).forEach(it -> System.out.print(it+" "));
-        System.out.println("");
+//        System.out.println("Original");
+//        Arrays.stream(vals).forEach(it -> System.out.print(it+" "));
+//        System.out.println("");
 
         LocalDateTime inicio = LocalDateTime.now();
         int low = getLowerIndex(vals, 0);
@@ -26,21 +26,26 @@ public class Ordenacao {
         inicio = LocalDateTime.now();
         ordertingOn2SelectionSort(elements, vals);
         fim  = LocalDateTime.now();
-
         System.out.println("ordenado por ordertingOn2SelectionSort"  + " e demorou:" + (ChronoUnit.MICROS.between(inicio, fim)));
-//        Arrays.stream(vals).forEach(it -> System.out.print(it+" "));
-        System.out.println("");
-        System.out.println("-------------------");
+
 
         vals =  RandomIntArray.getRandomIntArray(elements, maxElements);
         inicio = LocalDateTime.now();
         ordertingOn2InsertionSort(elements, vals);
         fim  = LocalDateTime.now();
-
         System.out.println("ordenado por ordertingOn2InsertionSort"  + " e demorou:" + (ChronoUnit.MICROS.between(inicio, fim)));
-//        Arrays.stream(vals).forEach(it -> System.out.print(it+" "));
-        System.out.println("");
+
+
+        vals =  RandomIntArray.getRandomIntArray(elements, maxElements);
+        inicio = LocalDateTime.now();
+        QuickSort qs = new QuickSort();
+        qs.quickSort(vals);
+        fim  = LocalDateTime.now();
+        System.out.println("ordenado por QuickSort"  + " e demorou:" + (ChronoUnit.MICROS.between(inicio, fim)));
+
         System.out.println("-------------------");
+
+
 
 
 

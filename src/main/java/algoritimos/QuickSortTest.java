@@ -3,17 +3,20 @@ package algoritimos;
 import java.util.Arrays;
 import java.util.Random;
 
-public class QuickSort {
-
+public class QuickSortTest {
+    int passagem = 0;
     public void quickSort(int[] a) {
         quickSort(a, 0, a.length-1);
     }
 
     private void quickSort(int[] a, int menorIndiceDoArray, int maiorIndiceDoArray) {
+        passagem++;
+        System.out.print("passagem="+passagem);
         if (menorIndiceDoArray < maiorIndiceDoArray+1) {
             int p = partition(a, menorIndiceDoArray, maiorIndiceDoArray);
-            quickSort(a, menorIndiceDoArray, p-1);
-            quickSort(a, p+1, maiorIndiceDoArray);
+
+     //       quickSort(a, menorIndiceDoArray, p-1);
+     //       quickSort(a, p+1, maiorIndiceDoArray);
         }
 
     }
@@ -47,9 +50,10 @@ public class QuickSort {
     public static void main(String[] args) {
         int maxElements = 100;
         int elements = 9;
-        int[] vals =  RandomIntArray.getRandomIntArray(elements, maxElements);
+        int[] vals =  {34 ,32 ,28, 92, 77, 48, 72, 89, 38} ; //RandomIntArray.getRandomIntArray(elements, maxElements);
         Arrays.stream(vals).forEach(it -> System.out.print(it+" "));
-        QuickSort qs = new QuickSort();
+        System.out.println("");
+        QuickSortTest qs = new QuickSortTest();
         qs.quickSort(vals);
         System.out.println("");
         Arrays.stream(vals).forEach(it -> System.out.print(it+" "));
